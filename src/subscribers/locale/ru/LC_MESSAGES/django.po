@@ -1,0 +1,220 @@
+# -*- coding:utf-8 -*-
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-05-13 19:09+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+
+#: .\admin.py:58
+#, fuzzy
+msgid "Mailing lists"
+msgstr "Группы подписчиков"
+
+#: .\admin.py:74
+msgid "Emails received"
+msgstr "Письма доставленны"
+
+#: .\admin.py:125
+msgid "Import subscribers from CSV"
+msgstr "Импорт из CSV"
+
+#: .\admin.py:152
+msgid "Export selected subscribers to CSV"
+msgstr "Экспорт в CSV"
+
+#: .\admin.py:161 .\admin.py:172 .\admin.py:183 .\admin.py:194
+#, fuzzy
+msgid "subscribers were"
+msgstr "Подписчики"
+
+#: .\admin.py:161 .\admin.py:172 .\admin.py:183 .\admin.py:194
+#, fuzzy
+msgid "subscriber was"
+msgstr "Подписчики"
+
+#: .\admin.py:163
+msgid "Mark selected subscribers as subscribed"
+msgstr "Подписать выбранных"
+
+#: .\admin.py:174
+msgid "Mark selected subscribers as unsubscribed"
+msgstr "Отписать выбранных"
+
+#: .\admin.py:218
+msgid "Add selected subscribers to {mailing_list}"
+msgstr "Добавить выбранных в {mailing_list}"
+
+#: .\admin.py:230
+msgid "Remove selected subscribers from {mailing_list}"
+msgstr "Отписать выбранных от {mailing_list}"
+
+#: .\admin.py:260 .\models.py:153
+msgid "Subscribers"
+msgstr "Подписчики"
+
+#: .\admin.py:271 .\admin.py:395
+msgid "The {model} \"{obj}\" was saved successfully."
+msgstr ""
+
+#: .\admin.py:290
+msgid "Please select a mailing list to send this {model} to."
+msgstr ""
+
+#: .\admin.py:309
+msgid "Your date format was incorrect, so the email was not sent."
+msgstr ""
+
+#: .\admin.py:323
+msgid "Your time format was incorrect, so the email was not sent."
+msgstr ""
+
+#: .\admin.py:346
+msgid ""
+"The {model} \"{obj}\" was saved successfully. An email will be sent to "
+"{count} subscriber{pluralize}."
+msgstr ""
+
+#: .\admin.py:355
+msgid ""
+"{count} subscriber{pluralize} ignored, as they have already received this "
+"email."
+msgstr ""
+
+#: .\admin.py:389
+msgid ""
+"The {model} \"{obj}\" was saved successfully. A test email was sent to "
+"{email}."
+msgstr ""
+
+#: .\admin.py:399
+msgid ""
+"Your admin account needs an email address before we can send a test email."
+msgstr ""
+
+#: .\admin.py:430
+msgid "Recipients"
+msgstr "Получатели"
+
+#: .\admin.py:477 .\admin.py:495
+msgid "Active user does not have an email address."
+msgstr ""
+
+#: .\forms.py:82
+msgid "That CSV file is empty."
+msgstr "Указан пустой CVS файл"
+
+#: .\forms.py:89
+msgid "That CSV file did not contain a valid header line."
+msgstr ""
+
+#: .\forms.py:91
+msgid "Could not find a column labelled 'email' in that CSV file."
+msgstr ""
+
+#: .\forms.py:108
+msgid "Please upload a valid CSV file."
+msgstr ""
+
+#: .\forms.py:111
+msgid "There are no subscribers in that CSV file."
+msgstr ""
+
+#: .\forms.py:113
+msgid "No subscribers could be imported, due to errors in that CSV file."
+msgstr ""
+
+#: .\models.py:33
+msgid "Name"
+msgstr "Название"
+
+#: .\models.py:43
+msgid "Mailing List"
+msgstr "Группа подписчиков"
+
+#: .\models.py:44
+msgid "Mailing Lists"
+msgstr "Группы подписчиков"
+
+#: .\models.py:106
+msgid "E-Mail"
+msgstr ""
+
+#: .\models.py:111
+msgid "First name"
+msgstr "Имя"
+
+#: .\models.py:117
+msgid "Last name"
+msgstr "Фамилия"
+
+#: .\models.py:123
+#, fuzzy
+msgid "Subscribed"
+msgstr "Подписчик"
+
+#: .\models.py:152
+msgid "Subscriber"
+msgstr "Подписчик"
+
+#: .\models.py:162
+msgid "Pending"
+msgstr "Ожидающий"
+
+#: .\models.py:163
+msgid "Sent"
+msgstr "Отправлен"
+
+#: .\models.py:164
+msgid "Cancelled"
+msgstr "Отменен"
+
+#: .\models.py:165
+msgid "Unsubscribed"
+msgstr "Отписан"
+
+#: .\models.py:166
+msgid "Error"
+msgstr "Ошибка"
+
+#: .\registration.py:209
+msgid ""
+"An email manager has already been created with the slug {manager_slug!r}"
+msgstr ""
+
+#: .\registration.py:231
+msgid "{model!r} is already registered with this email manager"
+msgstr ""
+
+#: .\registration.py:256
+msgid "{model!r} is not registered with this email manager"
+msgstr ""
+
+#: .\views.py:48
+msgid "Subscription complete."
+msgstr ""
+
+#: .\views.py:51
+msgid "Invalid email address."
+msgstr ""
+
+#: .\views.py:77
+msgid "Invalid content type"
+msgstr ""
+
+#: .\views.py:85
+msgid "No corresponding email was sent to this subscriber."
+msgstr ""

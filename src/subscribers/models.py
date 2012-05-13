@@ -2,6 +2,7 @@
 
 import hashlib
 
+from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
@@ -29,6 +30,7 @@ class MailingList(models.Model):
     )
     
     name = models.CharField(
+        _('Name'),
         max_length = 200,
     )
     
@@ -38,6 +40,8 @@ class MailingList(models.Model):
         
     class Meta:
         ordering = ("name",)
+        verbose_name = _('Mailing List')
+        verbose_name_plural = _('Mailing Lists')
 
 
 def format_email(email, name=None):
@@ -99,21 +103,24 @@ class Subscriber(models.Model):
     )
     
     email = models.EmailField(
+        _('E-Mail'),
         unique = True,
     )
     
     first_name = models.CharField(
+        _('First name'),
         max_length = 200,
         blank = True,
     )
     
     last_name = models.CharField(
+        _('Last name'),
         max_length = 200,
         blank = True,
     )
     
     is_subscribed = models.BooleanField(
-        "subscribed",
+        _("Subscribed"),
         default = True,
     )
     
@@ -142,7 +149,8 @@ class Subscriber(models.Model):
         
     class Meta:
         ordering = ("email",)
-
+        verbose_name = _('Subscriber')
+        verbose_name_plural = _('Subscribers')
 
 STATUS_PENDING = 0
 STATUS_SENT = 1
@@ -151,11 +159,11 @@ STATUS_UNSUBSCRIBED = 3
 STATUS_ERROR = 4
 
 STATUS_CHOICES = (
-    (STATUS_PENDING, "Pending"),
-    (STATUS_SENT, "Sent"),
-    (STATUS_CANCELLED, "Cancelled"),
-    (STATUS_UNSUBSCRIBED, "Unsubscribed"),
-    (STATUS_ERROR, "Error"),
+    (STATUS_PENDING, _("Pending")),
+    (STATUS_SENT, _("Sent")),
+    (STATUS_CANCELLED, _("Cancelled")),
+    (STATUS_UNSUBSCRIBED, _("Unsubscribed")),
+    (STATUS_ERROR, _("Error")),
 )
 
 

@@ -4,6 +4,7 @@ import datetime
 from weakref import WeakValueDictionary
 from contextlib import closing
 
+from django.utils.translation import ugettext_lazy as _
 from django import template
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
@@ -205,7 +206,7 @@ class EmailManager(object):
         """Initializes the email manager."""
         # Check the slug is unique for this manager.
         if manager_slug in self.__class__._created_managers:
-            raise EmailManagerError("An email manager has already been created with the slug {manager_slug!r}".format(
+            raise EmailManagerError(_("An email manager has already been created with the slug {manager_slug!r}").format(
                 manager_slug = manager_slug,
             ))
         # Initialize thie engine.
@@ -227,7 +228,7 @@ class EmailManager(object):
         """
         # Check for existing registration.
         if self.is_registered(model):
-            raise RegistrationError("{model!r} is already registered with this email manager".format(
+            raise RegistrationError(_("{model!r} is already registered with this email manager").format(
                 model = model,
             ))
         # Perform any customization.
@@ -252,7 +253,7 @@ class EmailManager(object):
     def _assert_registered(self, model):
         """Raises a registration error if the given model is not registered with this email manager."""
         if not self.is_registered(model):
-            raise RegistrationError("{model!r} is not registered with this email manager".format(
+            raise RegistrationError(_("{model!r} is not registered with this email manager").format(
                 model = model,
             ))
     

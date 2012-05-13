@@ -3,6 +3,7 @@
 import csv, re
 
 from django import forms
+from django.utils.translation import ugettext_lazy as _
 
 from subscribers.models import MailingList
 
@@ -78,16 +79,16 @@ class ImportFromCsvForm(forms.Form):
                 try:
                     header_row = reader.next()
                 except StopIteration:
-                    raise forms.ValidationError("That CSV file is empty.")
+                    raise forms.ValidationError(_("That CSV file is empty."))
                 headers = [
                     RE_WHITESPACE.sub("_", cell.decode("utf-8", "ignore").lower().strip()).replace("firstname", "first_name").replace("lastname", "last_name")
                     for cell in header_row
                 ]
                 # Check the required fields.
                 if len(headers) == 0:
-                    raise forms.ValidationError("That CSV file did not contain a valid header line.")
+                    raise forms.ValidationError(_("That CSV file did not contain a valid header line."))
                 if not "email" in headers:
-                    raise forms.ValidationError("Could not find a column labelled 'email' in that CSV file.")
+                    raise forms.ValidationError(_("Could not find a column labelled 'email' in that CSV file."))
                 # Go through the rest of the CSV file.
                 clean_rows = []
                 invalid_rows = []
@@ -104,12 +105,12 @@ class ImportFromCsvForm(forms.Form):
                         print row_form.errors
                         invalid_rows.append((lineno, row_data))
             except csv.Error:
-                raise forms.ValidationError("Please upload a valid CSV file.")
+                raise forms.ValidationError(_("Please upload a valid CSV file."))
             # Check that some rows were parsed.
             if not clean_rows and not invalid_rows:
-                raise forms.ValidationError("There are no subscribers in that CSV file.")
+                raise forms.ValidationError(_("There are no subscribers in that CSV file."))
             if not clean_rows and invalid_rows:
-                raise forms.ValidationError("No subscribers could be imported, due to errors in that CSV file.")
+                raise forms.ValidationError(_("No subscribers could be imported, due to errors in that CSV file."))
             # Store the parsed data.
             self.cleaned_data["rows"] = clean_rows
             self.cleaned_data["invalid_rows"] = invalid_rows

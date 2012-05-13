@@ -2,6 +2,7 @@
 
 from functools import wraps
 
+from django.utils.translation import ugettext_lazy as _
 from django.contrib.contenttypes.models import ContentType
 from django.http import Http404, HttpResponse, HttpResponseBadRequest
 from django.shortcuts import render, get_object_or_404, redirect
@@ -44,10 +45,10 @@ def subscribe(request, form_cls=SubscribeForm, template_name="subscribers/subscr
             if data["redirect"]:
                 return redirect(data["redirect"])
             if request.is_ajax():
-                return HttpResponse("Subscription complete.")
+                return HttpResponse(_("Subscription complete."))
             return redirect("subscribers.views.subscribe_success")
         elif request.is_ajax():
-            return HttpResponseBadRequest("Invalid email address.")
+            return HttpResponseBadRequest(_("Invalid email address."))
     else:
         form = form_cls
     # Render the template.
@@ -73,7 +74,7 @@ def _protected_view(func):
         try:
             content_type = ContentType.objects.get_for_id(content_type_id)
         except ContentType.DoesNotExist:
-            raise Http404("Invalid content type")
+            raise Http404(_("Invalid content type"))
         # Look up the subscriber.
         subscriber = get_object_or_404(Subscriber, id=subscriber_id)
         # Look up the obj.
@@ -81,7 +82,7 @@ def _protected_view(func):
         obj = get_object_or_404(model, id=object_id)
         # Check that the email being referred to was actually sent.
         if not obj.dispatchedemail_set.filter(subscriber=subscriber).exclude(status=STATUS_PENDING).exists():
-            raise Http404("No corresponding email was sent to this subscriber.")
+            raise Http404(_("No corresponding email was sent to this subscriber."))
         # Wow, we've actually passed all the validation steps!
         return func(request, content_type, obj, subscriber, secure_hash)
     return do_protected_view

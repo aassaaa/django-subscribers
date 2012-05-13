@@ -3,6 +3,7 @@
 import csv, cStringIO, datetime, time
 from functools import partial, wraps
 
+from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from django.conf.urls.defaults import patterns, url
 from django.contrib import admin, messages
@@ -54,7 +55,7 @@ class SubscriberAdmin(AdminBase):
         (None, {
             "fields": ("email", "first_name", "last_name", "is_subscribed",),
         }),
-        ("Mailing lists", {
+        (_("Mailing lists"), {
             "fields": ("mailing_lists",),
         }),
     )
@@ -70,7 +71,7 @@ class SubscriberAdmin(AdminBase):
     def get_email_count(self, obj):
         """Returns the number of emails sent to this subscriber."""
         return obj.email_count
-    get_email_count.short_description = "Emails received"
+    get_email_count.short_description = _("Emails received")
     
     # Custom views.
     
@@ -121,7 +122,7 @@ class SubscriberAdmin(AdminBase):
             form = ImportFromCsvForm()
         # Render the template.
         return render(request, "admin/subscribers/subscriber/import_from_csv.html", {
-            "title": "Import subscribers from CSV",
+            "title": _("Import subscribers from CSV"),
             "form": form,
         })
     
@@ -148,7 +149,7 @@ class SubscriberAdmin(AdminBase):
         response["Content-Disposition"] = "attachment; filename=subscribers.csv"
         response["Content-Length"] = str(len(content))
         return response
-    export_selected_to_csv.short_description = "Export selected subscribers to CSV"
+    export_selected_to_csv.short_description = _("Export selected subscribers to CSV")
     
     def subscribe_selected(self, request, qs):
         """Subscribes the selected subscribers."""
@@ -157,9 +158,9 @@ class SubscriberAdmin(AdminBase):
             obj.save()
         self.message_user(request, u"{count} {item} marked as subscribed.".format(
             count = count,
-            item = count != 1 and "subscribers were" or "subscriber was",
+            item = count != 1 and _("subscribers were") or _("subscriber was"),
         ))
-    subscribe_selected.short_description = "Mark selected subscribers as subscribed"
+    subscribe_selected.short_description = _("Mark selected subscribers as subscribed")
     
     def unsubscribe_selected(self, request, qs):
         """Unsubscribes the selected subscribers."""
@@ -168,9 +169,9 @@ class SubscriberAdmin(AdminBase):
             obj.save()
         self.message_user(request, u"{count} {item} marked as unsubscribed.".format(
             count = count,
-            item = count != 1 and "subscribers were" or "subscriber was",
+            item = count != 1 and _("subscribers were") or _("subscriber was"),
         ))
-    unsubscribe_selected.short_description = "Mark selected subscribers as unsubscribed"
+    unsubscribe_selected.short_description = _("Mark selected subscribers as unsubscribed")
     
     def add_selected_to_mailing_list(self, request, qs, mailing_list):
         """Adds the selected subscribers to a mailing list."""
@@ -179,7 +180,7 @@ class SubscriberAdmin(AdminBase):
         count = len(qs)
         self.message_user(request, u"{count} {item} added to {mailing_list}.".format(
             count = count,
-            item = count != 1 and "subscribers were" or "subscriber was",
+            item = count != 1 and _("subscribers were") or _("subscriber was"),
             mailing_list = mailing_list,
         ))
             
@@ -190,7 +191,7 @@ class SubscriberAdmin(AdminBase):
         count = len(qs)
         self.message_user(request, u"{count} {item} removed from {mailing_list}.".format(
             count = count,
-            item = count != 1 and "subscribers were" or "subscriber was",
+            item = count != 1 and _("subscribers were") or _("subscriber was"),
             mailing_list = mailing_list,
         ))
     
@@ -214,7 +215,7 @@ class SubscriberAdmin(AdminBase):
             actions[add_action_name] = (
                 partial(self.__class__.add_selected_to_mailing_list, mailing_list=mailing_list),
                 add_action_name,
-                "Add selected subscribers to {mailing_list}".format(
+                _("Add selected subscribers to {mailing_list}").format(
                     mailing_list = mailing_list,
                 ),
             )
@@ -226,7 +227,7 @@ class SubscriberAdmin(AdminBase):
             actions[remove_action_name] = (
                 partial(self.__class__.remove_selected_from_mailing_list, mailing_list=mailing_list),
                 remove_action_name,
-                "Remove selected subscribers from {mailing_list}".format(
+                _("Remove selected subscribers from {mailing_list}").format(
                     mailing_list = mailing_list,
                 ),
             )
@@ -256,7 +257,7 @@ class MailingListAdmin(AdminBase):
     def get_subscriber_count(self, obj):
         """Returns the number of subscribers to this list."""
         return obj.subscriber_count
-    get_subscriber_count.short_description = "Subscribers"
+    get_subscriber_count.short_description = _("Subscribers")
     
     
 admin.site.register(MailingList, MailingListAdmin)
@@ -267,7 +268,7 @@ def allow_save_and_send(func):
     @wraps(func)
     def do_allow_save_and_send(admin_cls, request, obj, *args, **kwargs):
         def make_error_redirect(warning=None):
-            admin_cls.message_user(request, u"The {model} \"{obj}\" was saved successfully.".format(
+            admin_cls.message_user(request, _(u"The {model} \"{obj}\" was saved successfully.").format(
                     model = obj._meta.verbose_name,
                     obj = obj,
                 ))
@@ -286,7 +287,7 @@ def allow_save_and_send(func):
             # Try filtering by mailing list.
             send_to = request.POST["_send_to"]
             if send_to == "_nobody":
-                return make_error_redirect(u"Please select a mailing list to send this {model} to.".format(
+                return make_error_redirect(_(u"Please select a mailing list to send this {model} to.").format(
                     model = obj._meta.verbose_name,
                 ))
             elif send_to == "_all":
@@ -305,7 +306,7 @@ def allow_save_and_send(func):
                     else:
                         break
                 if send_on_date is None:
-                    return make_error_redirect(u"Your date format was incorrect, so the email was not sent.")
+                    return make_error_redirect(_(u"Your date format was incorrect, so the email was not sent."))
             else:
                 send_on_date = datetime.datetime.now().date()
             # Get the send time.
@@ -319,7 +320,7 @@ def allow_save_and_send(func):
                     else:
                         break
                 if send_on_time is None:
-                    return make_error_redirect(u"Your time format was incorrect, so the email was not sent.")
+                    return make_error_redirect(_(u"Your time format was incorrect, so the email was not sent."))
             else:
                 send_on_time = datetime.datetime.now().time()
             # Get the send datetime.
@@ -342,7 +343,7 @@ def allow_save_and_send(func):
                 subscriber_count += 1
                 admin_cls.email_manager.dispatch_email(obj, subscriber, send_on_datetime)
             # Message the user.
-            admin_cls.message_user(request, u"The {model} \"{obj}\" was saved successfully. An email will be sent to {count} subscriber{pluralize}.".format(
+            admin_cls.message_user(request, _(u"The {model} \"{obj}\" was saved successfully. An email will be sent to {count} subscriber{pluralize}.").format(
                 model = obj._meta.verbose_name,
                 obj = obj,
                 count = subscriber_count,
@@ -351,7 +352,7 @@ def allow_save_and_send(func):
             # Warn about unsent emails.
             if potential_subscriber_count > subscriber_count:
                 unsent_count = potential_subscriber_count - subscriber_count
-                messages.warning(request, u"{count} subscriber{pluralize} ignored, as they have already received this email.".format(
+                messages.warning(request, _(u"{count} subscriber{pluralize} ignored, as they have already received this email.").format(
                     count = unsent_count,
                     pluralize = unsent_count != 1 and "s were" or " was",
                 ))
@@ -385,17 +386,17 @@ def allow_save_and_test(func):
                 email_obj = adapter.render_email(obj, subscriber)
                 email_obj.send()
                 # Message the user.
-                admin_cls.message_user(request, u"The {model} \"{obj}\" was saved successfully. A test email was sent to {email}.".format(
+                admin_cls.message_user(request, _(u"The {model} \"{obj}\" was saved successfully. A test email was sent to {email}.").format(
                     model = obj._meta.verbose_name,
                     obj = obj,
                     email = subscriber.email,
                 ))
             else:
-                admin_cls.message_user(request, u"The {model} \"{obj}\" was saved successfully.".format(
+                admin_cls.message_user(request, _(u"The {model} \"{obj}\" was saved successfully.").format(
                     model = obj._meta.verbose_name,
                     obj = obj,
                 ))
-                messages.warning(request, u"Your admin account needs an email address before we can send a test email.")
+                messages.warning(request, _(u"Your admin account needs an email address before we can send a test email."))
             # Redirect the user.
             return redirect("{site}:{app}_{model}_change".format(
                 site = admin_cls.admin_site.name,
@@ -426,7 +427,7 @@ class EmailAdmin(VersionAdminBase):
     def get_subscriber_count(self, obj):
         """Returns the number of subscribers who have received this email."""
         return obj.dispatchedemail_set.count()
-    get_subscriber_count.short_description = "Recipients"
+    get_subscriber_count.short_description = _("Recipients")
     
     @allow_save_and_send
     @allow_save_and_test
@@ -473,7 +474,7 @@ class EmailAdmin(VersionAdminBase):
             response["Content-Type"] = "text/html; charset=utf-8"
             return response
         else:
-            raise Http404("Active user does not have an email address.")
+            raise Http404(_("Active user does not have an email address."))
         
     def preview_txt_view(self, request, object_id):
         email = get_object_or_404(self.model, pk=object_id)
@@ -491,7 +492,7 @@ class EmailAdmin(VersionAdminBase):
             response["Content-Type"] = "text/plain; charset=utf-8"
             return response
         else:
-            raise Http404("Active user does not have an email address.")
+            raise Http404(_("Active user does not have an email address."))
         
     class Media:
         js = (

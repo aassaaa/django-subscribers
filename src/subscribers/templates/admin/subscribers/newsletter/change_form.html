@@ -1,30 +1,30 @@
 {% extends "admin/change_form.html" %}
-
+{% load i18n %}
 
 {% block after_related_objects %}
     <div id="_subscribers_time_options" class="module aligned">
-        <h2>Send on date</h2>
+        <h2>{% trans 'Send on date' %}</h2>
         <div class="form-row">
-            <label for="_subscribers_send_on_date">Date:</label>
+            <label for="_subscribers_send_on_date">{% trans 'Date' %}:</label>
             <p class="datetime">
-                Date: <input id="_subscribers_send_on_date" size="10" name="_send_on_date" class="vDateField" type="text"><br/>
-                Time: <input name="_send_on_time" size="10" class="vTimeField" type="text">
+                {% trans 'Date' %}: <input id="_subscribers_send_on_date" size="10" name="_send_on_date" class="vDateField" type="text"><br/>
+                {% trans 'Time' %}: <input name="_send_on_time" size="10" class="vTimeField" type="text">
             </p>
         </div>
     </div>
 
     <div class="submit-row">
-        <label class="small" for="_subscribers_send_to">Send to</label>
+        <label class="small" for="_subscribers_send_to">{% trans 'Send to' %}</label>
         <select id="_subscribers_send_to" name="_send_to">
             <option value="_nobody">--------</option>
-            <option value="_all">All subscribers</option>
+            <option value="_all">{% trans 'All subscribers' %}</option>
             {% for option in send_to_options %}
                 <option value="{{option.pk}}">{{option}}</option>
             {% endfor %}
         </select>
-        <a id="_subscribers_send_time" class="small" href="#">right now</a>
-        <input type="submit" class="default" name="_saveandtest" value="Save and test"/>
-        <input type="submit" name="_saveandsend" value="Send"/>
+        <a id="_subscribers_send_time" class="small" href="#">{% trans 'right now' %}</a>
+        <input type="submit" class="default" name="_saveandtest" value="{% trans 'Save and test' %}"/>
+        <input type="submit" name="_saveandsend" value="{% trans 'Send' %}"/>
     </div>
     
     <script>
@@ -32,10 +32,10 @@
             var a = $("#_subscribers_send_time");
             var timeOptions = $("#_subscribers_time_options").hide();
             a.toggle(function() {
-                a.text("on a date");
+                a.text("{% trans 'on a date' %}");
                 timeOptions.show();
             }, function() {
-                a.text("right now");
+                a.text("{% trans 'right now' %}");
                 timeOptions.hide().find("input").val("");
             });
         }(django.jQuery))
@@ -47,6 +47,6 @@
 {% block object-tools-items %}
     {{block.super}}
     {% if user.email %}
-        <li><a href="preview/" target="_blank" class="viewsitelink">Preview</a></li>
+        <li><a href="preview/" target="_blank" class="viewsitelink">{% trans 'Preview' %}</a></li>
     {% endif %}
 {% endblock %}

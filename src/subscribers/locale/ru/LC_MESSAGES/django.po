@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-13 19:09+0300\n"
+"POT-Creation-Date: 2012-05-13 22:06+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,6 @@ msgstr ""
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: .\admin.py:58
-#, fuzzy
 msgid "Mailing lists"
 msgstr "Группы подписчиков"
 
@@ -29,6 +28,7 @@ msgid "Emails received"
 msgstr "Письма доставленны"
 
 #: .\admin.py:125
+#: .\templates\admin\subscribers\subscriber\import_from_csv.html.py:11
 msgid "Import subscribers from CSV"
 msgstr "Импорт из CSV"
 
@@ -37,14 +37,12 @@ msgid "Export selected subscribers to CSV"
 msgstr "Экспорт в CSV"
 
 #: .\admin.py:161 .\admin.py:172 .\admin.py:183 .\admin.py:194
-#, fuzzy
 msgid "subscribers were"
-msgstr "Подписчики"
+msgstr ""
 
 #: .\admin.py:161 .\admin.py:172 .\admin.py:183 .\admin.py:194
-#, fuzzy
 msgid "subscriber was"
-msgstr "Подписчики"
+msgstr ""
 
 #: .\admin.py:163
 msgid "Mark selected subscribers as subscribed"
@@ -63,6 +61,7 @@ msgid "Remove selected subscribers from {mailing_list}"
 msgstr "Отписать выбранных от {mailing_list}"
 
 #: .\admin.py:260 .\models.py:153
+#: .\templates\admin\subscribers\subscriber\import_from_csv.html.py:9
 msgid "Subscribers"
 msgstr "Подписчики"
 
@@ -162,11 +161,11 @@ msgid "Last name"
 msgstr "Фамилия"
 
 #: .\models.py:123
-#, fuzzy
 msgid "Subscribed"
-msgstr "Подписчик"
+msgstr "Подписан"
 
 #: .\models.py:152
+#: .\templates\admin\subscribers\subscriber\import_from_csv.html.py:10
 msgid "Subscriber"
 msgstr "Подписчик"
 
@@ -218,3 +217,68 @@ msgstr ""
 #: .\views.py:85
 msgid "No corresponding email was sent to this subscriber."
 msgstr ""
+
+#: .\templates\admin\subscribers\newsletter\change_form.html.py:6
+msgid "Send on date"
+msgstr "Дата отправки"
+
+#: .\templates\admin\subscribers\newsletter\change_form.html.py:8
+#: .\templates\admin\subscribers\newsletter\change_form.html.py:10
+msgid "Date"
+msgstr "Дата"
+
+#: .\templates\admin\subscribers\newsletter\change_form.html.py:11
+msgid "Time"
+msgstr "Время"
+
+#: .\templates\admin\subscribers\newsletter\change_form.html.py:17
+msgid "Send to"
+msgstr "Отправить в"
+
+#: .\templates\admin\subscribers\newsletter\change_form.html.py:20
+msgid "All subscribers"
+msgstr "Все подписчики"
+
+#: .\templates\admin\subscribers\newsletter\change_form.html.py:25
+#: .\templates\admin\subscribers\newsletter\change_form.html.py:38
+msgid "right now"
+msgstr "прямо сейчас"
+
+#: .\templates\admin\subscribers\newsletter\change_form.html.py:26
+msgid "Save and test"
+msgstr "Сохранить и отправить тестовое письмо"
+
+#: .\templates\admin\subscribers\newsletter\change_form.html.py:27
+msgid "Send"
+msgstr "Отправить"
+
+#: .\templates\admin\subscribers\newsletter\change_form.html.py:35
+msgid "on a date"
+msgstr "в указанное время"
+
+#: .\templates\admin\subscribers\newsletter\change_form.html.py:50
+msgid "Preview"
+msgstr "Предварительный просмотр"
+
+#: .\templates\admin\subscribers\subscriber\change_list.html.py:8
+#: .\templates\admin\subscribers\subscriber\import_from_csv.html.py:75
+msgid "Import from CSV"
+msgstr "Импорт из CSV"
+
+#: .\templates\admin\subscribers\subscriber\import_from_csv.html.py:8
+msgid "Home"
+msgstr "Назад"
+
+#: .\templates\admin\subscribers\subscriber\import_from_csv.html.py:20
+msgid ""
+"Please upload a CSV file of subscribers. This should be formatted as per the "
+"examples below."
+msgstr ""
+
+#: .\templates\admin\subscribers\subscriber\import_from_csv.html.py:59
+msgid "Users who have unsubscribed from your mailing list won"
+msgstr ""
+
+#: .\templates\admin\subscribers\subscriber\import_from_csv.html.py:69
+msgid "File"
+msgstr "Файл"

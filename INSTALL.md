@@ -68,6 +68,10 @@ There are minimal templates provided in the project. Each template is provided w
     {{unsubscribe_url}} - the URL on which the user can unsubscribe online
     {{subscriber}} - object representing recipient of the email
 
-You then need to set up a cronjob to take care of the background bulk-sending of emails. This cronjob needs to run the ./manage.py sendemailbatch command on a regular (eg. 5 minute) interval. Check out the management command source code for available arguments.
+You then need to set up a cronjob to take care of the background bulk-sending of emails. This cronjob needs to run the
+
+    ./manage.py sendemailbatch
+
+command on a regular (eg. 5 minute) interval. Check out the management command source code for available arguments.
 
 That'll get you started. A whole lot of the functionality is customisable by calling subscribers.register() on your Newsletter model, but I'll leave that as an exercise to you to read through the source code if you need customization beyond what I've outlined above.

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-13 22:06+0300\n"
+"POT-Creation-Date: 2012-05-15 23:06+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,11 +38,11 @@ msgstr "Экспорт в CSV"
 
 #: .\admin.py:161 .\admin.py:172 .\admin.py:183 .\admin.py:194
 msgid "subscribers were"
-msgstr ""
+msgstr "подписчиков было"
 
 #: .\admin.py:161 .\admin.py:172 .\admin.py:183 .\admin.py:194
 msgid "subscriber was"
-msgstr ""
+msgstr "подписчик был"
 
 #: .\admin.py:163
 msgid "Mark selected subscribers as subscribed"
@@ -67,37 +67,43 @@ msgstr "Подписчики"
 
 #: .\admin.py:271 .\admin.py:395
 msgid "The {model} \"{obj}\" was saved successfully."
-msgstr ""
+msgstr "{model} \"{obj}\" сохранена"
 
 #: .\admin.py:290
 msgid "Please select a mailing list to send this {model} to."
-msgstr ""
+msgstr "Пожалуйста, выберите группу для отправки {model}"
 
 #: .\admin.py:309
 msgid "Your date format was incorrect, so the email was not sent."
-msgstr ""
+msgstr "Неправильный формат даты, сообщение не отправленно."
 
 #: .\admin.py:323
 msgid "Your time format was incorrect, so the email was not sent."
-msgstr ""
+msgstr "Неправильный формат времени, сообщение не отправленно."
 
 #: .\admin.py:346
 msgid ""
 "The {model} \"{obj}\" was saved successfully. An email will be sent to "
 "{count} subscriber{pluralize}."
 msgstr ""
+"{model} \"{obj}\" сохранен успешно. Сообщения разосланы "
+"{count} получателям."
 
 #: .\admin.py:355
 msgid ""
 "{count} subscriber{pluralize} ignored, as they have already received this "
 "email."
 msgstr ""
+"{count} подписчиков проигнорированно т.к. они уже получили "
+"эту рассылку."
 
 #: .\admin.py:389
 msgid ""
 "The {model} \"{obj}\" was saved successfully. A test email was sent to "
 "{email}."
 msgstr ""
+"The {model} \"{obj}\" сохранен. Тестовое письмо отправленно на "
+"{email}."
 
 #: .\admin.py:399
 msgid ""
@@ -204,11 +210,11 @@ msgstr ""
 
 #: .\views.py:48
 msgid "Subscription complete."
-msgstr ""
+msgstr "Подписка оформлена"
 
 #: .\views.py:51
 msgid "Invalid email address."
-msgstr ""
+msgstr "Неправильный email адрес"
 
 #: .\views.py:77
 msgid "Invalid content type"
@@ -276,9 +282,54 @@ msgid ""
 msgstr ""
 
 #: .\templates\admin\subscribers\subscriber\import_from_csv.html.py:59
-msgid "Users who have unsubscribed from your mailing list won"
+msgid ""
+"Users who have unsubscribed from your mailing list won't be re-subscribed if "
+"they are imported again."
 msgstr ""
 
 #: .\templates\admin\subscribers\subscriber\import_from_csv.html.py:69
 msgid "File"
 msgstr "Файл"
+
+#: .\templates\subscribers\subscribe.html.py:8
+#: .\templates\subscribers\subscribe.html.py:11
+msgid "Subscribe to our newsletter"
+msgstr "Подписка на наши новости"
+
+#: .\templates\subscribers\subscribe.html.py:25
+#, fuzzy
+msgid "Subscribe"
+msgstr "Подписан"
+
+#: .\templates\subscribers\subscribe_success.html.py:8
+#: .\templates\subscribers\subscribe_success.html.py:11
+msgid "Subscription complete"
+msgstr "Подписка оформлена"
+
+#: .\templates\subscribers\subscribe_success.html.py:13
+msgid "You are now signed up to our newsletter. Many thanks!"
+msgstr "Вы успешно подписали на рассылку наших новостей. Спасибо!"
+
+#: .\templates\subscribers\unsubscribe.html.py:8
+#: .\templates\subscribers\unsubscribe.html.py:11
+msgid "Really unsubscribe?"
+msgstr "Уверены, что хотить отказаться от рассылки?"
+
+#: .\templates\subscribers\unsubscribe.html.py:12
+msgid ""
+"Please press the button below to confirm that you wish to unsubscribe from "
+"our newsletter."
+msgstr ""
+
+#: .\templates\subscribers\unsubscribe.html.py:15
+msgid "Unsubscribe"
+msgstr "Отписаться"
+
+#: .\templates\subscribers\unsubscribe_success.html.py:8
+#: .\templates\subscribers\unsubscribe_success.html.py:11
+msgid "Unsubscribe complete"
+msgstr "Подписка отменена"
+
+#: .\templates\subscribers\unsubscribe_success.html.py:12
+msgid "You are now unsubscribed from our newsletter."
+msgstr "Вы успешно отменили подписку на наши новости"

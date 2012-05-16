@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-15 23:06+0300\n"
+"POT-Creation-Date: 2012-05-16 11:47+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -86,24 +86,21 @@ msgid ""
 "The {model} \"{obj}\" was saved successfully. An email will be sent to "
 "{count} subscriber{pluralize}."
 msgstr ""
-"{model} \"{obj}\" сохранен успешно. Сообщения разосланы "
-"{count} получателям."
+"{model} \"{obj}\" сохранен успешно. Сообщения разосланы {count} получателям."
 
 #: .\admin.py:355
 msgid ""
 "{count} subscriber{pluralize} ignored, as they have already received this "
 "email."
 msgstr ""
-"{count} подписчиков проигнорированно т.к. они уже получили "
-"эту рассылку."
+"{count} подписчиков проигнорированно т.к. они уже получили эту рассылку."
 
 #: .\admin.py:389
 msgid ""
 "The {model} \"{obj}\" was saved successfully. A test email was sent to "
 "{email}."
 msgstr ""
-"The {model} \"{obj}\" сохранен. Тестовое письмо отправленно на "
-"{email}."
+"The {model} \"{obj}\" сохранен. Тестовое письмо отправленно на {email}."
 
 #: .\admin.py:399
 msgid ""
@@ -118,33 +115,45 @@ msgstr "Получатели"
 msgid "Active user does not have an email address."
 msgstr ""
 
-#: .\forms.py:82
+#: .\forms.py:19 .\models.py:33
+msgid "Name"
+msgstr "ФИО"
+
+#: .\forms.py:25
+msgid "First Name"
+msgstr "Имя"
+
+#: .\forms.py:31
+msgid "Last Name"
+msgstr "Фамилия"
+
+#: .\forms.py:37 .\models.py:106
+msgid "E-Mail"
+msgstr ""
+
+#: .\forms.py:86
 msgid "That CSV file is empty."
 msgstr "Указан пустой CVS файл"
 
-#: .\forms.py:89
+#: .\forms.py:93
 msgid "That CSV file did not contain a valid header line."
 msgstr ""
 
-#: .\forms.py:91
+#: .\forms.py:95
 msgid "Could not find a column labelled 'email' in that CSV file."
 msgstr ""
 
-#: .\forms.py:108
+#: .\forms.py:112
 msgid "Please upload a valid CSV file."
 msgstr ""
 
-#: .\forms.py:111
+#: .\forms.py:115
 msgid "There are no subscribers in that CSV file."
 msgstr ""
 
-#: .\forms.py:113
+#: .\forms.py:117
 msgid "No subscribers could be imported, due to errors in that CSV file."
 msgstr ""
-
-#: .\models.py:33
-msgid "Name"
-msgstr "Название"
 
 #: .\models.py:43
 msgid "Mailing List"
@@ -153,10 +162,6 @@ msgstr "Группа подписчиков"
 #: .\models.py:44
 msgid "Mailing Lists"
 msgstr "Группы подписчиков"
-
-#: .\models.py:106
-msgid "E-Mail"
-msgstr ""
 
 #: .\models.py:111
 msgid "First name"
@@ -297,7 +302,6 @@ msgid "Subscribe to our newsletter"
 msgstr "Подписка на наши новости"
 
 #: .\templates\subscribers\subscribe.html.py:25
-#, fuzzy
 msgid "Subscribe"
 msgstr "Подписан"
 

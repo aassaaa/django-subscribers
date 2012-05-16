@@ -16,21 +16,25 @@ class SubscribeForm(forms.Form):
     """
 
     name = forms.CharField(
+        label=_('Name'),
         max_length = 401,
         required = False,
     )
-    
+
     first_name = forms.CharField(
+        label=_('First Name'),
         max_length = 200,
         required = False,
     )
-    
+
     last_name = forms.CharField(
+        label=_('Last Name'),
         max_length = 200,
         required = False,
     )
-    
+
     email = forms.EmailField(
+        label=_('E-Mail'),
         required = True,
     )
     
